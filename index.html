@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Justice for Jain Muni</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 300px;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #8B0000; /* Dark Red */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a30000;
+    }
+
+    .notice {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Send Email for Justice</h2>
+  <input type="text" id="username" placeholder="Enter your name" />
+  <button onclick="sendEmail()">Send Email</button>
+  <div id="status" class="notice"></div>
+
+  <script>
+    function sendEmail() {
+      const name = document.getElementById("username").value.trim();
+      if (!name) {
+        alert("Please enter your name before sending the email.");
+        return;
+      }
+
+      const recipients = [
+        "home.cordination@rajasthan.gov.in",
+        "dgp-rj@nic.in",
+        "adgp.intelligence@rajpolice.gov.in",
+        "rajphcc@gmail.com"
+      ];
+
+      const subject = encodeURIComponent("Urgent Request for Justice and Investigation into the Killing of Jain Muni");
+
+      const body = `Respected Sir/Madam,
+
+I am writing this letter with deep anguish and concern regarding the tragic and shocking incident involving the killing of a revered Jain saint (Muni) during his vihar (spiritual journey). It is being reported that this act was intentional and not accidental, which has deeply hurt the sentiments of the entire Jain community and all those who believe in non-violence and spiritual values.
+
+This is not just an attack on an individual, but an attack on our values, beliefs, and a peaceful way of life. Such an act of brutality against a respected spiritual leader demands immediate and strict action.
+
+I humbly but firmly request the Government of Rajasthan and the concerned departments to:
+ - Conduct a thorough, impartial, and urgent investigation into this matter.
+ - Ensure that the real culprits are identified and brought to justice without delay.
+ - Take steps to prevent such incidents in the future and ensure the safety of spiritual leaders during their vihar.
+
+We seek justice for the Jain Muni who lost his life in such a tragic and unjust manner. The accused must be held accountable and punished as per the law to uphold the rule of justice and maintain communal harmony.
+
+Hoping for a prompt and fair response from the authorities.
+
+Sincerely,
+${name}`;
+
+      const mailtoLink = `mailto:${recipients.join(",")}?subject=${subject}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+
+      document.getElementById("status").innerText = "Mail client opened. Please click on send mail icon.";
+    }
+  </script>
+</body>
+</html>
